@@ -85,7 +85,7 @@ const Modal = ({ productId }: Props) => {
                       Stay updated with product pricing alerts right in your inbox!
                     </h4>
                     <p className="text-sm text-gray-600 mt-2">
-                      We'll send you an email whenever the price of this product changes.
+                      We will send you an email whenever the price of this product changes.
                     </p>
                   </div>
                   <form className="flex flex-col mt-5" onSubmit={handleSubmit}>
