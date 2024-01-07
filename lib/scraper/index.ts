@@ -41,7 +41,7 @@ export async function scrapeAmazonProduct(url: string) {
       $('.a-price.a-text-price span.a-offscreen'),
       $('#listPrice'),
       $('#priceblock_dealprice'),
-      $('.a-size-base.a-color-price')
+      // $('.a-size-base.a-color-price')
     )
 
     // Extract the availability and stock
@@ -62,7 +62,26 @@ export async function scrapeAmazonProduct(url: string) {
     // Extract the discount rate
     const discountRate = $('.savingsPercentage').text().replace(/&nbsp;|\s|[-%]/g, '');
 
+    // Extract the description
     const description = extractDescription($);
+
+    // Extract the category
+
+    // Extract the reviews count text
+    const reviewsText = $('#acrCustomerReviewText').text().trim();
+
+    // Use a regular expression to find the first match of one or more digits, possibly separated by non-breaking spaces
+    const match = reviewsText.match(/\d+(\s*\d+)*/);
+    const reviewsNumberString = match ? match[0].replace(/\s+/g, '') : '0';
+
+    // Convert the extracted string to a number
+    const reviewsCount = Number(reviewsNumberString);
+
+    // Extract the stars from within the 'averageCustomerReviews' div
+    const starsText = $('#averageCustomerReviews .a-size-base.a-color-base').first().text().trim();
+
+    // Replace the comma with a dot and convert to a number
+    const stars = Number(starsText.replace(',', '.'));
 
     // Construct data object with scraped information
     const data = {
@@ -75,8 +94,8 @@ export async function scrapeAmazonProduct(url: string) {
       priceHistory: [],
       discountRate: Number(discountRate),
       category: 'category',
-      reviewsCount: 100,
-      stars: 4.5,
+      reviewsCount: reviewsCount,
+      stars: stars,
       isOutOfStock: outOfStock,
       description,
       lowestPrice: Number(currentPrice) || Number(originalPrice),
@@ -84,6 +103,7 @@ export async function scrapeAmazonProduct(url: string) {
       averagePrice: Number(currentPrice) || Number(originalPrice),
     }
 
+    console.log(data);
     return data;
   } catch (error: any) {
     throw new Error(`Failed to scrape product: ${error.message}`)
