@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PriceTracker
 
-## Getting Started
+Deployed version: https://nextjs-price-tracker.vercel.app/
 
-First, run the development server:
+## Description
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+PriceTracker is an eCommerce price tracker built using Next.js 14, featuring server actions for efficient data handling. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This project is designed to scrape eCommerce websites for price data, perform regular updates using cron jobs, and notify users via email.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The deployment is managed on Vercel for seamless performance and accessibility.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Features
 
-## Learn More
+- **Next.js 14 with Server Actions**: Utilizes the latest Next.js features for improved server-side operations.
+- **Data Scraping**: Implements Cheerio for efficient and accurate web scraping.
+- **Cron Jobs**: Automated tasks for regular price tracking.
+- **Email Notifications**: Uses Nodemailer to send price updates to users.
+- **Responsive Design**: Integrated with React Responsive Carousel for a user-friendly interface.
 
-To learn more about Next.js, take a look at the following resources:
+## Technologies Used
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Next.js 14
+- Cheerio
+- Mongoose
+- Nodemailer
+- React (with React DOM)
+- React Responsive Carousel
+- Axios
+- Headless UI for React
